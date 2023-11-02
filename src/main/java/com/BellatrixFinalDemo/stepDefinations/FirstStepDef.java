@@ -2,8 +2,6 @@ package com.BellatrixFinalDemo.stepDefinations;
 
 import java.util.List;
 
-import org.testng.Assert;
-
 import com.BellatrixFinalProject.Keywords.Keyword;
 import com.BellatrixFinalProject.Pages.HomePage;
 
@@ -22,7 +20,7 @@ public class FirstStepDef {
 
 	@When("All results must contain Falcon word in the product title")
 	public void all_results_must_contain_Falcon_word_in_the_product_title() {
-		List<String> productTitles = homepage.getProductTitles();
+		List<String> productTitles = homepage.getFalconTitles();
 		for (String productTitle : productTitles) {
 			System.out.println(productTitle);
 			// Assert.assertTrue(productTitle.contains("Falcon"),productTitle);
@@ -37,7 +35,10 @@ public class FirstStepDef {
 
 	@When("All results must contain proton word in the product title")
 	public void all_results_must_contain_proton_word_in_the_product_title() {
-		homepage.getProductTitles();
+		List<String> protonProduct = homepage.getProtonTitles();
+		for (String proton : protonProduct) {
+			System.out.println(proton);
+		}
 	}
 
 	@Given("Search result sort by popularity")
@@ -47,9 +48,25 @@ public class FirstStepDef {
 	}
 
 	@Then("Result should be display by poularity")
-	public void getAllPriceOfPoularity() {
-		homepage.getPrice();
-		System.out.println(homepage.getPrice());
-
+	public void getAllProductOfPoularity() {
+		List<String> popularity = homepage.displayBypopularity();
+		for (String popular : popularity) {
+			System.out.println(popular);
+		}
 	}
+
+	@Given("Search Result sort by low to high Price")
+	public void search_result_sort_by_low_to_high_price() {
+		homepage.clickOnDropDown("Sort by price: low to high");
+	}
+
+	@Then("Get all Price of low to high product")
+	public void get_all_price_of_low_to_high_product() {
+
+		List<String> productPrice = homepage.allProductPrice();
+		for (String price : productPrice) {
+			System.out.println(price);
+		}
+	}
+
 }

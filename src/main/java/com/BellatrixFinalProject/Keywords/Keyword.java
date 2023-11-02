@@ -94,7 +94,4 @@ public class Keyword {
 		
 	}
 
-	public void dropDown(String textToEnter) {
-		dropDown(null, textToEnter);
-	}
 }

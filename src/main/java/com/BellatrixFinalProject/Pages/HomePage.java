@@ -6,7 +6,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
 import com.BellatrixFinalProject.Base.TestBase;
 import com.BellatrixFinalProject.Keywords.Keyword;
@@ -26,14 +25,21 @@ public class HomePage {
 		searchComponent.sendKeys(Keys.ENTER);
 	}
 	
-	@FindBy(css="h2.woocommerce-loop-product__title")
-	List<WebElement> productTitles;
+	@FindBy(css="h2[class*=title]")
+	List<WebElement> falconProductTitles;
 	
-	public List<String> getProductTitles() {
-		
-		 return keyword.getTexts(productTitles);
+	public List<String> getFalconTitles() {
+		 return keyword.getTexts(falconProductTitles);
 	}
 	
+	
+	@FindBy(css="h2[class*=title]")
+	List<WebElement> protonProductTitles;
+	
+	public List<String> getProtonTitles() {
+		return keyword.getTexts(protonProductTitles);
+
+	}
 
 	@FindBy(css = "#main > div:nth-child(2) > form > select")
 	WebElement dropDown;
@@ -42,18 +48,18 @@ public class HomePage {
 	keyword.dropDown(dropDown, textTOVisible);
 	}
 
-	@FindBy(css="h2.woocommerce-loop-product__title")
+	@FindBy(css="a[href=\"https://demos.bellatrix.solutions/product/saturn-v/\"] h2")
 	 List<WebElement> sortPopularity;
 	
-	public List<String> getPrice() {
+	public List<String> displayBypopularity() {
 		 return keyword.getTexts(sortPopularity);
 	}
 
 	@FindBy(css="span.price")
 	List<WebElement> allPrice;
 	
-	public void allProductPrice() {
-		
+	public List<String> allProductPrice() {
+		return keyword.getTexts(allPrice);
 	}
 	
 
